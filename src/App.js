@@ -11,7 +11,7 @@ function CardNasa({ item }) {
   return (
     <>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={item.url || defaultPlaceholder} />
+        <Card.Img style={{ aspectRatio: '2', objectFit: 'cover' }} variant="top" src={item.url || defaultPlaceholder} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           {
@@ -112,16 +112,20 @@ function App() {
   return (
     <Container>
       <Row className="mt-5">
-        <Col sm={3}>
+        <Col style={{ textAlign: 'center' }}>
+          <Image style={{ width: '40%' }} rounded={true} src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" />
+        </Col>
+      </Row>
+      <Row className="mt-5">
+        <Col sm={2}>
           <Button disabled={loading} onClick={handleAPOD}>Picture of the day</Button>
         </Col>
-        <Col sm={9}>
+        <Col sm={10}>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Search</Form.Label>
               <Form.Control onChange={handleChange} placeholder="Search here..." />
               <Form.Text className="text-muted">
-                Find amazing pic in NASA library.
+                or find amazing pic in NASA library.
               </Form.Text>
             </Form.Group>
           </Form>
